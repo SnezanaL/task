@@ -7,7 +7,7 @@ export class PrettyPrintPipe implements PipeTransform {
 
   transform(val) {
     return val
-      //.replace(/ /g, "")
+      //.replace(/ /g, "g")
      // .replace(/ /g, '<span class="hljs-punctuation"></span>')
       //.replace(/\n/g, '<br/>');
   }

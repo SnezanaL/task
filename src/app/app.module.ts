@@ -10,6 +10,7 @@ import {
   HighlightOptions,
 } from 'ngx-highlightjs';
 import { PrettyPrintPipe } from './pretty-print.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
@@ -24,12 +25,13 @@ import { AppComponent } from './app.component';
     MatTabsModule,
     MatToolbarModule,
     MatButtonModule,
-    HighlightModule
+    HighlightModule,
+    HttpClientModule
   ],
   providers: [
     {
       provide: HIGHLIGHT_OPTIONS,
-      useValue: {
+      useValue: <HighlightOptions>{
         lineNumbers: true,
         coreLibraryLoader: () => import('highlight.js/lib/core'),
         lineNumbersLoader: () => import('highlightjs-line-numbers.js'),
