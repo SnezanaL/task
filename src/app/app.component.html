@@ -8,30 +8,85 @@
 
 <div class="container">
   <div class="mx-auto compare-section">
-    <button mat-raised-button color="primary" class="compare-btn">Compare</button>
+    <button mat-raised-button color="primary" class="compare-btn" (click)="isJsonsEquals(jsonCsv, jsonPrn)">Compare</button>
   </div>
   <div class="row">
     <div class="col">
       <div class="viewer-wrapper">
-        <h4>CSV ßßää</h4>
+        <h4>CSV</h4>
         <mat-tab-group>
-          <mat-tab label="First"> 
-            <div><code [highlight]="code2 | prettyprint" (highlighted)="onHighlight($event)" [languages]="['json']"  [lineNumbers]="true"><pre></pre></code></div>
+          <mat-tab label="Json">
+            <div><code [highlight]="jsonCsv | prettyprint" (highlighted)="onHighlight($event)" [languages]="['json']"
+                [lineNumbers]="true"><pre></pre></code></div>
           </mat-tab>
-          <mat-tab label="Second" class="html-view">
-            <div><code [highlight]="code1" [languages]="['html']"  [lineNumbers]="true"><pre></pre></code></div>
+          <mat-tab label="Table" class="html-view">
+            <div class="displayHtml">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Postcode</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Credit Limit</th>
+                    <th scope="col" class="text-end">Birthday</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let data of result1, let i = index;">
+                  <tr>
+                    <td>{{data.Name}}</td>
+                    <td>{{data.Address}}</td>
+                    <td>{{data.Postcode}}</td>
+                    <td>{{data.Phone}}</td>
+                    <td>{{data.Credit_Limit}}</td>
+                    <td class="text-end">{{data.Birthday}}</td>
+                  </tr>
+
+                </tbody>
+              </table>
+              <!-- <div><code [highlight]="code1" [languages]="['html']"  [lineNumbers]="true"><pre></pre></code></div> -->
+            </div>
+
           </mat-tab>
-          <mat-tab label="Third"> Content 3 </mat-tab>
+
         </mat-tab-group>
       </div>
-      
+
     </div>
     <div class="col">
       <div class="viewer-wrapper">
         <h4>PRN</h4>
         <mat-tab-group>
-          <mat-tab label="First"> Content 1 </mat-tab>
-          <mat-tab label="Second"> Content 2 </mat-tab>
+          <mat-tab label="Json">
+            <div><code [highlight]="jsonPrn | prettyprint" (highlighted)="onHighlight($event)" [languages]="['json']"
+                [lineNumbers]="true"><pre></pre></code></div>
+          </mat-tab>
+          <mat-tab label="Table">
+            <div class="displayHtml">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Postcode</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Credit Limit</th>
+                    <th scope="col" class="text-end">Birthday</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let data of result2, let i = index;">
+                  <tr>
+                    <td>{{data.Name}}</td>
+                    <td>{{data.Address}}</td>
+                    <td>{{data.Postcode}}</td>
+                    <td>{{data.Phone}}</td>
+                    <td>{{data.Credit_Limit}}</td>
+                    <td class="text-end">{{data.Birthday}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </mat-tab>
           <mat-tab label="Third"> Content 3 </mat-tab>
         </mat-tab-group>
       </div>
@@ -39,9 +94,6 @@
   </div>
 </div>
 
-
-
-   
 <button (click)="simpleAlert()">Simple Alert</button>
 <button (click)="alertWithSuccess()">Alert with Success</button>
 <button (click)="confirmBox()">Confirm Box</button>

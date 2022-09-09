@@ -15,14 +15,21 @@ export class HttpService {
   .set('content-type', 'text/csv;charset=EUC-JP')
   .set('encoding', 'ISO-8859-1')
 
-  constructor(private http: HttpClient) {
-    console.log(file)
-   }
+  constructor(private http: HttpClient) { }
   
 
   getCSV(): Observable<any> {
     //let url = decUtf8('assets/Workbook2.csv')
     return this.http.get('assets/Workbook2.csv', {headers: this.headers, responseType: 'text'} )
+    .pipe( map(data => data),
+    catchError(err => {
+      return throwError(err);
+    }));
+  }
+
+  getPrn(): Observable<any> {
+    //let url = decUtf8('assets/Workbook2.csv')
+    return this.http.get('assets/Workbook2.prn', { responseType: 'text'} )
     .pipe( map(data => data),
     catchError(err => {
       return throwError(err);
