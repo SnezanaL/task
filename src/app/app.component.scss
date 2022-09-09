@@ -1,0 +1,27 @@
+.header {
+ background-color: transparent;
+ .logo-img {
+  img {
+   width: 200px;
+  }
+ }
+}
+.compare-section {
+ text-align: center;
+}
+.viewer-wrapper {
+ border: 1px solid rgba(0,0,0,.2);
+ border-radius: 4px;
+ margin: 24px 0;
+ h4 {
+  color: rgb(0 0 0 / 54%);
+  font-weight: 400;
+  padding: 8px 8px 8px 16px;
+ }
+}
+.mat-tab-group {
+ padding: 1px;
+}
+.html-view {
+ background: rgba(0,0,0,.01);
+}
