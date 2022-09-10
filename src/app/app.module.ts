@@ -9,15 +9,18 @@ import {
   HIGHLIGHT_OPTIONS,
   HighlightOptions,
 } from 'ngx-highlightjs';
-import { PrettyPrintPipe } from './pretty-print.pipe';
+import { PrettyPrintPipe } from './pipes/pretty-print.pipe';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { PhoneNumberPipe } from './pipes/phone-number.pipe';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrettyPrintPipe
+    PrettyPrintPipe,
+    PhoneNumberPipe
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { AppComponent } from './app.component';
     HttpClientModule
   ],
   providers: [
+    DatePipe,
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: <HighlightOptions>{

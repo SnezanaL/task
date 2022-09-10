@@ -1,14 +1,15 @@
 <p>
   <mat-toolbar class="header">
     <div class="container logo-img">
-      <img src="/assets/images/beeboard-logo-new.png" alt="">
+      <img src="./assets/images/beeboard-logo-new.png" alt="">
     </div>
   </mat-toolbar>
 </p>
 
 <div class="container">
   <div class="mx-auto compare-section">
-    <button mat-raised-button color="primary" class="compare-btn" (click)="isJsonsEquals(jsonCsv, jsonPrn)">Compare</button>
+    <button mat-raised-button color="primary" class="compare-btn" (click)="isJsonsEqual(jsonCsv, jsonPrn)">Compare JSON</button>
+    <button mat-raised-button color="primary" class="compare-btn" (click)="isHtmlsEqual()">Compare Table</button>
   </div>
   <div class="row">
     <div class="col">
@@ -21,7 +22,7 @@
           </mat-tab>
           <mat-tab label="Table" class="html-view">
             <div class="displayHtml">
-              <table class="table">
+              <table class="table"  #tableCsv>
                 <thead>
                   <tr>
                     <th scope="col">Name</th>
@@ -32,7 +33,7 @@
                     <th scope="col" class="text-end">Birthday</th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let data of result1, let i = index;">
+                <tbody *ngFor="let data of resultCsv, let i = index;">
                   <tr>
                     <td>{{data.Name}}</td>
                     <td>{{data.Address}}</td>
@@ -63,7 +64,7 @@
           </mat-tab>
           <mat-tab label="Table">
             <div class="displayHtml">
-              <table class="table">
+              <table class="table" #tablePrn>
                 <thead>
                   <tr>
                     <th scope="col">Name</th>
@@ -74,12 +75,12 @@
                     <th scope="col" class="text-end">Birthday</th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let data of result2, let i = index;">
+                <tbody *ngFor="let data of resultPrn, let i = index;">
                   <tr>
                     <td>{{data.Name}}</td>
                     <td>{{data.Address}}</td>
                     <td>{{data.Postcode}}</td>
-                    <td>{{data.Phone}}</td>
+                    <td>{{data.Phone }}</td>
                     <td>{{data.Credit_Limit}}</td>
                     <td class="text-end">{{data.Birthday}}</td>
                   </tr>
@@ -87,13 +88,9 @@
               </table>
             </div>
           </mat-tab>
-          <mat-tab label="Third"> Content 3 </mat-tab>
+         
         </mat-tab-group>
       </div>
     </div>
   </div>
 </div>
-
-<button (click)="simpleAlert()">Simple Alert</button>
-<button (click)="alertWithSuccess()">Alert with Success</button>
-<button (click)="confirmBox()">Confirm Box</button>

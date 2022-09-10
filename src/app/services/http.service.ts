@@ -5,15 +5,17 @@ import { Observable, throwError } from 'rxjs';
 
 const file = 'assets/Workbook2.csv';
 var decIso = new TextDecoder("iso-8859-1");
-var decUtf8 = new TextDecoder("utf-8")
-
+var decUtf8 = new TextDecoder("utf-8");
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
   headers = new HttpHeaders()
-  .set('content-type', 'text/csv;charset=EUC-JP')
-  .set('encoding', 'ISO-8859-1')
+  .set('Accept', 'application/json, text/plain, */*')
+  .set('decoding', 'windows-1252')
+  .set('content-type', 'text/plain;charset=windows-1252')
+  .set('Access-Control-Allow-Origin', '*')
+  .set('Accept-Language', 'da, en-gb;q=0.8, en;q=0.7;no,nl;q=0.5');
 
   constructor(private http: HttpClient) { }
   
